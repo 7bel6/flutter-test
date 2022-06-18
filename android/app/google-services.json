@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "918314913921",
+    "project_id": "gsc-flutter",
+    "storage_bucket": "gsc-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918314913921:android:4f174db6fab6858149bd80",
+        "android_client_info": {
+          "package_name": "com.example.gsc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918314913921-03bnvu77a4q3bu5q2ealghvcrdlrc3k4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJCSO8bdrkDXr8FzrrTY6h6b0FbtMvylU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918314913921-03bnvu77a4q3bu5q2ealghvcrdlrc3k4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
