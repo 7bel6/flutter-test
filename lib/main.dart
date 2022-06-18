@@ -6,6 +6,8 @@ import 'package:gsc/responsive/web_screen_layout.dart';
 import 'package:gsc/utils/colors.dart';
 
 void main() async {
+  // ensure firebase is initialized when app starts
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
