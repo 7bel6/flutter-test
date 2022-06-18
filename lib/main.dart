@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gsc/responsive/mobile_screen_layout.dart';
+import 'package:gsc/responsive/responsive_layout_screen.dart';
+import 'package:gsc/responsive/web_screen_layout.dart';
 import 'package:gsc/utils/colors.dart';
 
 void main() {
@@ -17,7 +20,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: mobileBackgroundColor,
       ),
-      home: Scaffold(body: Text('Hello World')),
+      home: const ResponsiveLayout(
+        webScreenLayout: WebScreenLayout(),
+        mobileScreenLayout: MobileScreenLayout()
+      ),
     );
   }
 }
