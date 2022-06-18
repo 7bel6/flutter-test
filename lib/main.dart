@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gsc/utils/colors.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'GSC',
-      home: Text('Hello World'),
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: mobileBackgroundColor,
+      ),
+      home: Scaffold(body: Text('Hello World')),
     );
   }
 }
