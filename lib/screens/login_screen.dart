@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gsc/resources/auth_methods.dart';
 import 'package:gsc/utils/colors.dart';
 import 'package:gsc/widgets/text_field_input.dart';
 
@@ -19,6 +20,19 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+  }
+
+  void loginUser() async {
+    String res = await AuthMethods().loginUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    if (res == "Success") {
+      //Navigator.pushReplacementNamed(context, '/home');
+      print(res);
+    } else {
+      print(res);
+    }
   }
 
   @override
@@ -58,6 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 16),
                 InkWell(
+                  onTap: loginUser,
                   child: Container(
                     child: const Text("تسحيل الدخول"),
                     alignment: Alignment.center,
