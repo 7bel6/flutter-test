@@ -88,6 +88,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
+                Flexible(
+                  child: Container(),
+                  flex: 2,
+                ),
               ],
             ),
           ),

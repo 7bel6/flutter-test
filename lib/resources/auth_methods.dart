@@ -14,7 +14,7 @@ class AuthMethods {
     String res = "Some Error";
     try{
       if(email.isNotEmpty || password.isNotEmpty){
-        UserCredential userInfo = await _auth.signInWithEmailAndPassword(email: email, password: password);
+        //UserCredential userInfo = await _auth.signInWithEmailAndPassword(email: email, password: password);
         res = "Success";
         if(res == "Success"){
           final user = _auth.currentUser;

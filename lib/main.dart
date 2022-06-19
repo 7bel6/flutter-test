@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +14,14 @@ void main() async {
   if (kIsWeb) {
     // check if the web run
     await Firebase.initializeApp(
-        options: const FirebaseOptions(
-            apiKey: "AIzaSyABA0808LdL2v2vkkEhNSBI8e1oNErh71k",
-            appId: "",
-            messagingSenderId: "918314913921",
-            projectId: "gsc-flutter",
-            storageBucket: "gsc-flutter.appspot.com",
-          ),
-        );
+      options: const FirebaseOptions(
+        apiKey: "AIzaSyABA0808LdL2v2vkkEhNSBI8e1oNErh71k",
+        appId: "",
+        messagingSenderId: "918314913921",
+        projectId: "gsc-flutter",
+        storageBucket: "gsc-flutter.appspot.com",
+      ),
+    );
   } else {
     await Firebase.initializeApp();
   }
@@ -39,13 +40,36 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: mobileBackgroundColor,
         textTheme: ThemeData().textTheme.apply(
-          fontFamily: 'Almarai',
-        ),
+              fontFamily: 'Almarai',
+            ),
       ),
       // home: const ResponsiveLayout(
       //     webScreenLayout: WebScreenLayout(),
       //     mobileScreenLayout: MobileScreenLayout()),
-      home: LoginScreen(),
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot){
+          if (snapshot.connectionState == ConnectionState.active) {
+            if (snapshot.hasData) {
+              return const ResponsiveLayout(
+                  webScreenLayout: WebScreenLayout(),
+                  mobileScreenLayout: MobileScreenLayout());
+            } else if(snapshot.hasError){
+              return const Center(
+                child: Text("Error"),
+              );
+            }
+          }
+          if(snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: primaryColor,
+              ),
+            );
+          }
+          return const LoginScreen();
+        },
+      ),
     );
   }
 }
